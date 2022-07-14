@@ -1,13 +1,10 @@
-function getTwoDigitString(value) {
-    return value < 10 ? `0${value}` : String(value);
-}
-
 class AlarmClock {
     static getFormattedTime(data) {
-        const date = typeof data !== 'undefined' ? new Date(data) : new Date()
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        return `${getTwoDigitString(hours)}:${getTwoDigitString(minutes)}`;
+        const date = typeof data !== 'undefined' ? new Date(data) : new Date();
+        return date.toLocaleTimeString("ru-Ru", {
+            hour: "2-digit",
+            minute: "2-digit",
+        });
     }
 
     constructor() {
@@ -53,7 +50,6 @@ class AlarmClock {
                 }
             })
         }, 100)
-        
     }
 
     stop() {
@@ -70,7 +66,6 @@ class AlarmClock {
 
     clearAlarms() {
         this.stop();
-        delete this.alarmCollection;
         this.alarmCollection = [];
     }
 }
