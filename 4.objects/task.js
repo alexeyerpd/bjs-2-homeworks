@@ -12,6 +12,10 @@ Student.prototype.addMark = function(mark) {
   this.marks = (this.marks || []).concat(mark);
 }
 
+Student.prototype.addMarks = function(...marks) {
+  this.marks = (this.marks || []).concat(marks);
+}
+
 Student.prototype.getAverage = function() {
   if (this.marks?.length) {
     return this.marks.reduce((acc, v) => acc + v) / this.marks.length;
